@@ -4,7 +4,7 @@ from collections import namedtuple
 from pyspark import SparkConf, SparkContext
 from pyspark.sql import SparkSession
 
-from lib.logger import Log4J
+from lib.logger import Log4j
 
 surveryRecord = namedtuple("SurveyRecord", ["age", "Gender", "Country", "State"])
 if __name__ == "__main__":
@@ -14,6 +14,8 @@ if __name__ == "__main__":
 
     #sc = SparkContext(conf=conf)
 
+
+
     spark = SparkSession \
             .builder \
             .config(conf = conf) \
@@ -21,7 +23,7 @@ if __name__ == "__main__":
             .getOrCreate()
 
     sc = spark.sparkContext
-    logger = Log4J(spark)
+    logger = Log4j(spark)
 
     if len(sys.argv) !=2:
         logger.error("Usage: HelloRDD <filename>")

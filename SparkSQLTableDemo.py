@@ -4,16 +4,16 @@ from lib.logger import Log4j
 
 if __name__ == "__main__":
     spark = SparkSession.builder \
-            .master("local[3]") \
-            .appName("SparkSQLTableDemo") \
-            .enableHiveSupport() \
-            .getOrCreate()
+        .master("local[3]") \
+        .appName("SparkSQLTableDemo") \
+        .enableHiveSupport() \
+        .getOrCreate()
 
     logger = Log4j(spark)
 
     flightTimeParquetDF = spark.read \
-                        .format("parquet") \
-                        .load("dataSource/")
+        .format("parquet") \
+        .load("dataSource/")
 
     spark.sql("CREATE DATABASE IF NOT EXISTS ARILINE_DB")
     spark.catalog.setCurrentDatabase("ARILINE_DB")
@@ -27,8 +27,8 @@ if __name__ == "__main__":
     flightTimeParquetDF.write \
         .format("csv") \
         .mode("overwrite") \
-        .option("header", True)\
-        .bucketBy(5,"ORIGIN", "OP_CARRIER") \
+        .option("header", True) \
+        .bucketBy(5, "ORIGIN", "OP_CARRIER") \
         .sortBy(("ORIGIN", "OP_CARRIER")) \
         .saveAsTable("flight_data_table")
 

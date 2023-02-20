@@ -1,0 +1,9 @@
+Country|State|city|Age|population Ratio
+India|TN|chennai|0-10|5
+India|TN|chennai|11-50|90
+ India|TN|chennai|51-100|5
+ India|TN|chennai|101+
+ India|TN|Madurai|0-10
+ India|TN|Madurai|11-50|90
+ India|TN|Madurai|51-100|5
+ India|TN|Madurai|101+|5
